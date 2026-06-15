@@ -104,24 +104,24 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 ### Día 1 (L-15): Introducción a Typescript y Angular
 
-<!-- - Introducción a Angular y su ecosistema.
+- Introducción a Angular y su ecosistema.
 
 - Entornos de desarrollo para Angular: 
   - Node: nvm (Node Version Manager)
-    - Problemas de instalación
   - Visual Studio Code
     - Extensiones recomendadas
 - Instalación de Angular CLI.
 - Workspace y proyectos en Angular.
   - Creación de un nuevo workspace Angular sin proyecto. `ng new`
   - Creación de un nuevo proyecto (app) Angular. `ng generate app`
+
+[descanso]: 11:10 - 11:40
+
+- Workspace y proyectos en Angular (2).
+
+  - Añadiendo ESLint (`ng add`) y Prettier.
   - Estructura de un workspace/proyecto Angular.
-  - Añadiendo ESLint (`ng add`) y Prettier. -->
 
-[descanso]: 11:00 - 11:30
-
-
-<!--
 - Angular CLI: Comandos básicos.
   - Servidor de desarrollo: `ng serve`.
   - Testing con Vitest: `ng test`.
@@ -132,18 +132,14 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Elementos de un componente: HTML, CSS, TypeScript. 
   - Template y estilos inline o en ficheros.
   - Guía de estilos actualizada
-  - Scaffolding -->
+  - Scaffolding 
+ 
 
-<!-- 
 - Elementos básicos de TypeScript.
   - Tipos de datos. Inferencia y anotación de tipos.
   - Tipado de funciones.
   - Tipos personalizados. Interfaces y tipos.
- -->
-
-### Día 2 (M-16): Componentes y Rutas
-
-<!-- 
+ 
 - Elementos básicos de TypeScript (continuación).
 
   - Clases ES6 en TypeScript.
@@ -155,6 +151,9 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
     - Import y Export.
     - Módulos por defecto y nombrados.
 
+### Día 2 (M-16): Componentes y Rutas
+
+<!-- 
  - Generación de componentes: `ng generate component <nombre>`.
     - Programación declarativa en el template: {{}}, [], ()
     - Estilos: Encapsulación de estilos. ViewEncapsulation.
