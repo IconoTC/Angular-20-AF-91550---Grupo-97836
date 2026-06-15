@@ -5,12 +5,12 @@ import { RouterOutlet } from '@angular/router';
   selector: 'ind-root',
   imports: [RouterOutlet],
   template: `
-    <h1>Hello, {{ title() }}</h1>
-
+    <h1 class="title">Hello, {{ title() }}</h1>
     <router-outlet />
   `,
-  styles: [],
+
+  styles: ``,
 })
 export class App {
-  protected readonly title = signal('demo-01');
+  protected readonly title = signal('Demo 01');
 }
