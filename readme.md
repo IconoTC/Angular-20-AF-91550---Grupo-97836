@@ -128,20 +128,19 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Testing con Playwright: `ng e2e`.
     - Problemas de versiones. Actualización con Version Lens 
   - Construcción del proyecto: `ng build`.
+  - Despliegue: `ng deploy`. Opciones
 - Generación de componentes: `ng generate`.
   - Elementos de un componente: HTML, CSS, TypeScript. 
   - Template y estilos inline o en ficheros.
   - Guía de estilos actualizada
   - Scaffolding 
+  - Estilos globales: variables, reset...
  
 
 - Elementos básicos de TypeScript.
   - Tipos de datos. Inferencia y anotación de tipos.
   - Tipado de funciones.
   - Tipos personalizados. Interfaces y tipos.
- 
-- Elementos básicos de TypeScript (continuación).
-
   - Clases ES6 en TypeScript.
     - Modificadores de acceso.
     - Getters y Setters.
@@ -151,81 +150,98 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
     - Import y Export.
     - Módulos por defecto y nombrados.
 
-### Día 2 (M-16): Componentes y Rutas
+### Día 2 (M-16): Componentes del Layout. Testing. 
 
-<!-- 
  - Generación de componentes: `ng generate component <nombre>`.
-    - Programación declarativa en el template: {{}}, [], ()
-    - Estilos: Encapsulación de estilos. ViewEncapsulation.
-    - Signals en el estado del componente y en la plantilla.
+    - Componente 🧿Sample
+      - Programación declarativa en el template: 
+        - Del componente a la vista: interpolación {{}}, binding de propiedades []
+        - De la vista al componente: binding de eventos ()
+      - Signals en el estado del componente y en la plantilla.
+      - Signals y asincronía. Zoneless
+  
+      <!-- 
+      - Estado en los componentes con ZoneJS v. Zoneless
+        - Detección del cambio: Zone v. Zoneless
+        - Detección del cambio: Estrategia OnPush
+      -->
   
 - Testing de componentes. Pruebas unitarias
-
   - Test con Vitest. Conceptos básicos y ejemplo
   - Elementos de los test en Angular: TestBed, fixture, detectChanges()
   - Test de implementación v. test de comportamiento.
   - Tests para componentes básicos.
     - Renderizado del componente (e.g. heading).
     - Interacción con el componente (e.g. click en un botón).
- -->
+    - Procesos asíncronos. Timers
 
 - [Descanso]: 11:00 - 11:30
  
-<!--  
+- Estilos: Encapsulación de estilos. ViewEncapsulation.
+ 
 - Scaffolding. Core
-  - Componentes Header y Footer.
-  - Componente Menu. Proyección de contenido
-  - Componentes Card. Aspecto visual básico.
-  - App como contenedor principal.
+  - Componente 🧿Header. Estructura básica en CSS: Grid
+  - Componente 🧿Footer
+  - Componente 🧿Card. Proyección de contenido
+  - Uso en el componente 🧿App como contenedor principal.
+  - Test de Header, Footer y Card
+  
+- Componentes de navegación  
+  - 🧿Menu. Tipo y datos. Iteración con @for
+  - 🧿MenuMobile. Svg como parte del template
+  - Incorporación en App: RWD basado en CSS y media queries
+  - 🧿Socials. @for + @switch: iconos svg de las redes sociales
+- Componentes gráficos
+  - 🧿Separador. Componente de CSS
+  - 🧿LogoCoders. Fichero svg como template
 
-
-- Scaffolding. Features
-  - Componentes (pages): Home, About.
-
-- Componentes.
-  - Componente Counter. Eventos. (click)
-    - Condicionales @If. [class]
-  - Componente Search. Input de usuario: data binding. [(ngModel)]
+- Componente 🧿Search. Input de usuario: data binding. [(ngModel)]
 - Referencias locales. #ref
-  - Componente SearchRef. Referencias locales en el template.  
+  - Signal queries: viewChild, focus()
+  - Ciclo de vida de los componentes
+
+
+### Día 3 (X-17). Paginas. Componentes activos. Comunicaciones
+
+<!-- 
+- Referencias locales (continuación)
+  - Effects (primitiva de signal) 
+  - Componente 🧿SearchRef. Referencias locales en el template.  
 -->
 
 <!--
 - Testing de todos los componentes
-  - Test de Header, Footer, Menu, Card y Layout.  
-  - Test de las páginas
-  - Test de Counter. Renderizado y eventos.
+  - Test de Menu, MenuMobile y Socials. Renderizado y @for
+  - Test de Separador y LogoCoders. Renderizado y @switch
   - Test de Search. Renderizado y data binding.
 -->
 
 <!-- 
-- Componentes: estado. Zone v. Zoneless
-- Estado en los componentes con ZoneJS.
-  - Componente Counter. Estado y eventos.
-  - Detección del cambio: Zone v. Zoneless
-  - Signals y estado
-  - Zoneless y asincronía: uso de Signals
+  - Componente 🧿user. Nuevo ejemplo de CSS
+  - Componente 🧿toggle: Widget css como componente Angular
 -->
 
-### Día 3 (X-17). Comunicaciones y Arquitectura de componentes. Formularios TD
+[Descanso]: 11:00 - 11:30
+
+<!-- Mitad del día 3 en versión anterior -->
+
+<!--  
+- Scaffolding. Features
+  - Componentes (pages): Home, Dashboard, About (Angular).
+  - Ejercicio de componentization
+    - Componentes incluidos en la demo de Angular
+    - Añadir logo-Angulas también al header
+
+- Componentes activos.
+  - Componente Counter. Estado y eventos.(click)
+  - Refactor Componente Counter. Condicionales @If. [class
+-->
 
 <!-- 
-- Review doble data binding & #ref
-  - Signal queries: viewChild
-  - Ciclo de vida de los componentes
-  - Effects (primitiva de signal)
-- Modificamos Menu. @for
-
-- Rutas básicas. `app.routes.ts`
-  - Array de rutas.
-  - Array de opciones de menu
-  - RouterOutlet en AppComponent.
-  - Navegación. Componente menu. @for
-  - SPA: RouterLink y RouterLinkActive
-- Rutas Lazy. Default import en las páginas
- -->
-
-[Descanso]: 11:00 - 11:30
+- Testing de todos los componentes
+  - Test de las páginas
+  - Test de Counter. Renderizado y eventos.
+-->
 
 <!-- 
 - Comunicación entre componentes
@@ -234,8 +250,38 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Output. Decorador @Output. EventEmitter. Función output(). Eventos del contador
   - Agrupando contadores. Estado en el componente padre
   - Contadores. Eventos con valor. Computed signals 
+ 
+ - Modal y menu mobile: Inputs + Outputs. Comunicación indirecta entre componentes
+  (Podría ir después de rutas)
+ 
+ -->
+
+
+### Día 4 (J-18). Rutas. Arquitectura de componentes. Formularios TD
+
+<!-- Mitad del día 3 en versión anterior repartida en el día-->
+
+<!-- 
+
+¿Directivas y pipes antes de las rutas?
+
+- Rutas básicas. `app.routes.ts`
+  - Array de rutas.
+  - Array de opciones de menu
+  - RouterOutlet en AppComponent.
+  - Navegación. Componente menu. @for
+  - SPA: RouterLink y RouterLinkActive
+- Rutas Lazy. Default import en las páginas
+
+- ¿Directivas?
   
 - Pipes. Location "es"
+
+ -->
+
+- [Descanso] - 11:05 - 11:35
+
+<!-- 
 
 - Arquitectura de componentes
   - Componentes de contenedores vs de presentación.
@@ -246,9 +292,13 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Componente Tasks-List. Lógica del estado
   - Componente Tasks-Item. Input y Output (Eventos)
   - Componente Tasks-Form. Output (Eventos) - Mock sin formulario
- -->
 
-### Día 4 (J-18). Servicios. Providers e injectors. Formularios DD
+-->
+
+
+### Día 5 (V-19).  Servicios. Providers e injectors. Formularios DD
+
+<!-- Dia 4 en versión anterior -->
 
 <!-- 
 - Componente Tasks-Form. Output (Eventos)
@@ -267,7 +317,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 - Solución de problemas en CSS con el grid RWD
 -->
 
-- [Descanso] - 11:05 - 11:35
+- [Descanso] 11:00 - 11:30
 
 <!-- 
 - Servicios y patrón Repository
@@ -297,7 +347,9 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Binding desde el template 
  -->
 
-### Día 5 (V-19). Servicios HTTP
+### Día 6 (L-22). Servicios HTTP. Arquitectura ¿despliegue?
+
+<!-- Dia 5 en versión anterior -->
 
 <!-- 
 - Formularios reactivos (continuación).
@@ -332,7 +384,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 -->
 
 - [Descanso] 11:00 - 11:30
-
+ 
 <!-- 
 - Servicios stateful: patrón Flux
 
@@ -362,7 +414,3 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 - Interceptors y Guards
 - Testing
  -->
-
-### Día 6 (L-22). Arquitectura, optimización y despliegue
-
-- [Descanso] 11:00 - 11:30
