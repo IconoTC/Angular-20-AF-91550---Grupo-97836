@@ -1,12 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { MenuMobile } from '../menu-mobile/menu-mobile';
-import { Separator } from "../separator/separator";
+import { Separator } from '../separator/separator';
 import { LogoCoders } from '../logo-coders/logo-coders';
 import { Search } from '../search/search';
+import { User } from '../user/user';
+import { Toggle } from '../toggle/toggle';
 
 @Component({
   selector: 'ind-header',
-  imports: [MenuMobile, Separator, LogoCoders, Search],
+  imports: [MenuMobile, Separator, LogoCoders, Search, User, Toggle],
   template: `
     <header>
       <div class="left-side">
@@ -16,9 +18,12 @@ import { Search } from '../search/search';
         <h1 class="title">{{ title() }}</h1>
       </hgroup>
       <div class="right-side">
-        <ind-menu-mobile class="desktop-only" />
+        <div class="icons">
+          <ind-user />
+          <ind-menu-mobile class="desktop-only" />
+        </div>
+        <ind-toggle />
         <!-- <ind-search-ref /> -->
-
       </div>
       <div class="bottom-row">
         <p>{{ subtitle() }}</p>
