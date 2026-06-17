@@ -17,6 +17,8 @@ import { Search } from '../search/search';
       </hgroup>
       <div class="right-side">
         <ind-menu-mobile class="desktop-only" />
+        <!-- <ind-search-ref /> -->
+
       </div>
       <div class="bottom-row">
         <p>{{ subtitle() }}</p>
