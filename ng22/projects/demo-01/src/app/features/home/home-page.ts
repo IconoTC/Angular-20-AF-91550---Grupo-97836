@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Card } from '../../core/components/card/card';
 import { Sample } from './components/sample/sample';
 
@@ -6,7 +6,7 @@ import { Sample } from './components/sample/sample';
   selector: 'ind-home-page',
   imports: [Sample, Card,],
   template: `
-   <h2>Home Page</h2>
+   <h2>{{ pageTitle() }}</h2>
 
       <ind-card>
         <ind-sample />
@@ -15,5 +15,7 @@ import { Sample } from './components/sample/sample';
   styleUrls: ['../pages.css'],
   styles: ``,
 })
-export default class HomePage {}
+export default class HomePage {
+    protected readonly pageTitle = signal('Home');
+}
 
