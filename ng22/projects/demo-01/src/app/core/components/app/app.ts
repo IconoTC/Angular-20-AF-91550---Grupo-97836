@@ -1,24 +1,30 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Sample } from '../sample/sample';
-import { Card } from '../card/card';
 import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
 import { Socials } from '../socials/socials';
 import { Menu } from '../menu/menu';
+import HomePage from '../../../features/home/home-page';
+import AboutPage from '../../../features/about/about-page';
+import DashboardPage from '../../../features/dashboard/dashboard-page';
+
 
 @Component({
   selector: 'ind-root',
-  imports: [RouterOutlet, Sample, Card, Header, Footer, Socials, Menu],
+  imports: [RouterOutlet,  Header, Footer, Socials, Menu, HomePage, DashboardPage, AboutPage],
   template: `
     <ind-header>
       <ind-menu />
     </ind-header>
     <main class="container">
       <router-outlet />
-      <ind-card>
-        <ind-sample />
-      </ind-card>
+
+      <!-- Aqui cargara las páginas el Router -->
+
+      <ind-home-page />
+      <ind-dashboard-page />
+      <ind-about-page />
+
     </main>
     <ind-footer>
       <ind-socials class="socials" />

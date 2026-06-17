@@ -5,10 +5,11 @@ import { LogoCoders } from '../logo-coders/logo-coders';
 import { Search } from '../search/search';
 import { User } from '../user/user';
 import { Toggle } from '../toggle/toggle';
+import { SearchRef } from '../search/search.ref';
 
 @Component({
   selector: 'ind-header',
-  imports: [MenuMobile, Separator, LogoCoders, Search, User, Toggle],
+  imports: [MenuMobile, Separator, LogoCoders, Search, SearchRef, User, Toggle],
   template: `
     <header>
       <div class="left-side">
@@ -19,16 +20,16 @@ import { Toggle } from '../toggle/toggle';
       </hgroup>
       <div class="right-side">
         <div class="icons">
-          <ind-user />
           <ind-menu-mobile class="desktop-only" />
+          <ind-user />
         </div>
         <ind-toggle />
-        <!-- <ind-search-ref /> -->
       </div>
       <div class="bottom-row">
         <p>{{ subtitle() }}</p>
-        <ind-search />
+        <ind-search class="mobile-only" />
         <div class="desktop-only">
+          <ind-search-ref />
           <ng-content></ng-content>
         </div>
       </div>
@@ -62,6 +63,7 @@ import { Toggle } from '../toggle/toggle';
         h1 {
           color: var(--color-primary);
           font-family: var(--font-family-heading);
+          font-optical-sizing: auto;
           font-size: 3.125rem;
           font-weight: 500;
           line-height: 100%;
@@ -86,6 +88,9 @@ import { Toggle } from '../toggle/toggle';
       .bottom-row {
         grid-column: span 3;
         margin-top: 0.6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
 
         .desktop-only {
           display: none;
@@ -93,17 +98,26 @@ import { Toggle } from '../toggle/toggle';
       }
     `,
     `
+      /*
+        @media screen and (min-width: 900px) {
+        */
       @media (width > 800px) {
         hgroup {
           max-width: none;
         }
 
-        ind-menu-mobile {
+        alc-menu-mobile,
+        .mobile-only {
           display: none;
         }
         .bottom-row {
+          width: 100%;
+          display: block;
           .desktop-only {
-            display: block;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
             margin-top: 1rem;
           }
         }
