@@ -158,7 +158,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
         - Del componente a la vista: interpolación {{}}, binding de propiedades []
         - De la vista al componente: binding de eventos ()
       - Signals en el estado del componente y en la plantilla.
-      - Signals y asincronía. Zoneless
+      - Signals y asincronía. Zoneless + Estrategia OnPush
   
       <!-- 
       - Estado en los componentes con ZoneJS v. Zoneless
@@ -191,11 +191,12 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - 🧿MenuMobile. Svg como parte del template
   - Incorporación en App: RWD basado en CSS y media queries
   - 🧿Socials. @for + @switch: iconos svg de las redes sociales
+
 - Componentes gráficos
   - 🧿Separador. Componente de CSS
   - 🧿LogoCoders. Fichero svg como template
 
-- Componente 🧿Search. Input de usuario: data binding. [(ngModel)]
+- Componente 🧿Search. Input de usuario: 2 way data binding. [(ngModel)]
 - Referencias locales. #ref
   - Signal queries: viewChild, focus()
   - Ciclo de vida de los componentes
@@ -203,68 +204,60 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 ### Día 3 (X-17). Paginas. Componentes activos. Comunicaciones
 
-<!-- 
 - Referencias locales (continuación)
   - Effects (primitiva de signal) 
   - Componente 🧿SearchRef. Referencias locales en el template.  
--->
+
+- Testing de todos los componentes
+  - Test de Search. Renderizado y data binding.
 
 <!--
-- Testing de todos los componentes
-  - Test de Menu, MenuMobile y Socials. Renderizado y @for
-  - Test de Separador y LogoCoders. Renderizado y @switch
-  - Test de Search. Renderizado y data binding.
+  - Test de Menu, MenuMobile y Socials. Renderizado y @for @switch
 -->
 
-<!-- 
-  - Componente 🧿user. Nuevo ejemplo de CSS
-  - Componente 🧿toggle: Widget css como componente Angular
--->
+- Componente 🧿user. Nuevo ejemplo de CSS
+- Componente 🧿toggle: Widget css como componente Angular
+- Test de Toggle. Spies & Mocks. 
+
+- Scaffolding. Features
+  - Componentes (pages): 🧿Home, 🧿Dashboard, 🧿About (Angular).
+  - Ejercicio de componentization
+    - 🧿Componentes incluidos en la demo de Angular
 
 [Descanso]: 11:00 - 11:30
 
-<!-- Mitad del día 3 en versión anterior -->
-
-<!--  
-- Scaffolding. Features
-  - Componentes (pages): Home, Dashboard, About (Angular).
-  - Ejercicio de componentization
-    - Componentes incluidos en la demo de Angular
-    - Añadir logo-Angulas también al header
-
 - Componentes activos.
-  - Componente Counter. Estado y eventos.(click)
-  - Refactor Componente Counter. Condicionales @If. [class
--->
+  - Componente 🧿Counter. Estado y eventos (click)
+  - Refactor Componente Counter. Condicionales @If. [class}
 
-<!-- 
 - Testing de todos los componentes
-  - Test de las páginas
-  - Test de Counter. Renderizado y eventos.
--->
+  - Test de Counter. Eventos. Errores al testear implementación
 
 <!-- 
+  - Test de las páginas
+-->
+
 - Comunicación entre componentes
 
   - Input. Decoradores @Input. función input(). Drilling
   - Output. Decorador @Output. EventEmitter. Función output(). Eventos del contador
-  - Agrupando contadores. Estado en el componente padre
+  - 🧿CounterList. Agrupando contadores. Estado en el componente padre
   - Contadores. Eventos con valor. Computed signals 
  
- - Modal y menu mobile: Inputs + Outputs. Comunicación indirecta entre componentes
-  (Podría ir después de rutas)
- 
- -->
-
 
 ### Día 4 (J-18). Rutas. Arquitectura de componentes. Formularios TD
 
-<!-- Mitad del día 3 en versión anterior repartida en el día-->
+<!-- 
+- Comunicación entre componentes (continuación)
+  - Intput en los contadores. Revision de los totales
+  - Test de inputs y outputs. 
+-->
+
+<!-- Mitad del día 3 en versión anterior repartida en el día
+¿Directivas y pipes antes de las rutas?
+-->
 
 <!-- 
-
-¿Directivas y pipes antes de las rutas?
-
 - Rutas básicas. `app.routes.ts`
   - Array de rutas.
   - Array de opciones de menu
@@ -272,17 +265,21 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Navegación. Componente menu. @for
   - SPA: RouterLink y RouterLinkActive
 - Rutas Lazy. Default import en las páginas
-
-- ¿Directivas?
-  
-- Pipes. Location "es"
-
  -->
+
+<!-- 
+ - 🧿Modal y menu mobile: Inputs + Outputs. Comunicación indirecta entre componentes
+  (Podría ir después de rutas)
+ -->
+
+<!-- - Pipes. Location "es" -->
+
+<!-- - ¿Directivas? -->
+
 
 - [Descanso] - 11:05 - 11:35
 
 <!-- 
-
 - Arquitectura de componentes
   - Componentes de contenedores vs de presentación.
   - Componentes inteligentes vs tontos.
@@ -292,9 +289,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Componente Tasks-List. Lógica del estado
   - Componente Tasks-Item. Input y Output (Eventos)
   - Componente Tasks-Form. Output (Eventos) - Mock sin formulario
-
 -->
-
 
 ### Día 5 (V-19).  Servicios. Providers e injectors. Formularios DD
 
