@@ -100,9 +100,9 @@ html:has(#theme-toggle:checked) {
   color-scheme: dark;
 }
 
-html:has(#theme-toggle:indeterminate) {
+/* html:has(#theme-toggle:not(:checked)) {
   color-scheme: light;
-}
+} */
 
 body {
   margin: 0;
