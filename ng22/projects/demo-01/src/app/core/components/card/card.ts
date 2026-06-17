@@ -13,6 +13,18 @@ import { Component } from '@angular/core';
       border-radius: 8px;
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
       text-align: center;
+      width: fit-content;
+
+      &.wide {
+        max-width: 100%;
+        width: 100%;
+        margin: 1rem 0;
+
+        display: flex;
+        justify-content: center;
+
+
+      }
     }
   `,
 })

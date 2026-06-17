@@ -7,11 +7,11 @@ import { Menu } from '../menu/menu';
 import HomePage from '../../../features/home/home-page';
 import AboutPage from '../../../features/about/about-page';
 import DashboardPage from '../../../features/dashboard/dashboard-page';
-
+import { Card } from '../card/card';
 
 @Component({
   selector: 'ind-root',
-  imports: [RouterOutlet,  Header, Footer, Socials, Menu, HomePage, DashboardPage, AboutPage],
+  imports: [RouterOutlet, Header, Footer, Socials, Menu, HomePage, DashboardPage, AboutPage, Card],
   template: `
     <ind-header>
       <ind-menu />
@@ -19,12 +19,19 @@ import DashboardPage from '../../../features/dashboard/dashboard-page';
     <main class="container">
       <router-outlet />
 
-      <!-- Aqui cargara las páginas el Router -->
+      <!-- Aquí cargara las páginas el Router -->
 
-      <ind-home-page />
-      <ind-dashboard-page />
-      <ind-about-page />
+      <ind-card class="wide">
+        <ind-home-page />
+      </ind-card>
 
+      <ind-card class="wide">
+        <ind-dashboard-page />
+      </ind-card>
+
+      <ind-card class="wide">
+        <ind-about-page />
+      </ind-card>
     </main>
     <ind-footer>
       <ind-socials class="socials" />
