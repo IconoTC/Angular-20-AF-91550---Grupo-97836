@@ -7,7 +7,7 @@ import { Card } from "../../core/components/card/card";
   imports: [Counter, Card],
   template: `
     <h2>{{ pageTitle() }}</h2>
-    <ind-card>
+    <ind-card [title]="title()">
       <ind-counter />
     </ind-card>
 
@@ -17,4 +17,6 @@ import { Card } from "../../core/components/card/card";
 })
 export default class DashboardPage {
     protected readonly pageTitle = signal('Dashboard');
+    protected readonly title = signal({ title: 'Contador', level: 3 as const });
+
 }

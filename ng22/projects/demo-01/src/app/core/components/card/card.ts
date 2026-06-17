@@ -1,9 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+
+
+interface CardConfig {
+  title?: string;
+  level: 2 | 3 | 4
+}
 
 @Component({
   selector: 'ind-card',
   imports: [],
-  template: ` <ng-content /> `,
+  template: ` 
+  @switch (title()?.level) {
+    @case (2) {
+      <h2>{{ title()?.title }}</h2>
+    }
+    @case (3) {
+      <h3>{{ title()?.title }}</h3>
+    }
+    @case (4) {
+      <h4>{{ title()?.title }}</h4>
+    } 
+    @default {
+      <!-- {{ title()?.level = never }} -->
+    }
+  }
+
+  <ng-content /> 
+  
+  `,
   styles: `
     :host {
       display: block;
@@ -28,4 +52,6 @@ import { Component } from '@angular/core';
     }
   `,
 })
-export class Card {}
+export class Card {
+  readonly title = input<CardConfig>();
+}

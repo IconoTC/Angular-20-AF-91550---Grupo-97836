@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
@@ -8,13 +8,15 @@ import HomePage from '../../../features/home/home-page';
 import AboutPage from '../../../features/about/about-page';
 import DashboardPage from '../../../features/dashboard/dashboard-page';
 import { Card } from '../card/card';
+import { MENU_OPTIONS } from '../../../app.routes';
+import { MenuOption } from '../../types/menu-option';
 
 @Component({
   selector: 'ind-root',
   imports: [RouterOutlet, Header, Footer, Socials, Menu, HomePage, DashboardPage, AboutPage, Card],
   template: `
-    <ind-header>
-      <ind-menu />
+    <ind-header [headerTitle]="title()" [subtitle]="subtitle()">
+      <ind-menu [options]="menuOptions()" />
     </ind-header>
     <main class="container">
       <router-outlet />
@@ -22,15 +24,15 @@ import { Card } from '../card/card';
       <!-- Aquí cargara las páginas el Router -->
 
       <ind-card class="wide">
-        <ind-home-page />
+        <ind-home-page id="home"/>
       </ind-card>
 
       <ind-card class="wide">
-        <ind-dashboard-page />
+        <ind-dashboard-page id="dashboard" />
       </ind-card>
 
       <ind-card class="wide">
-        <ind-about-page />
+        <ind-about-page id="about" />
       </ind-card>
     </main>
     <ind-footer>
@@ -67,5 +69,7 @@ import { Card } from '../card/card';
   `,
 })
 export class App {
-  // protected readonly title = signal('Demo 01');
+  protected readonly title = signal('Curso de Angular 22');
+  protected readonly subtitle = signal('Aprende a desarrollar aplicaciones con Angular');
+  protected readonly menuOptions = signal<MenuOption[]>(MENU_OPTIONS);
 }

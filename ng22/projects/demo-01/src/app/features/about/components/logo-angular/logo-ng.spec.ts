@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LogoNg } from './logo';
+import { LogoNg } from './logo-ng';
 
 describe('LogoNg', () => {
   let component: LogoNg;
