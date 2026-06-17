@@ -1,14 +1,14 @@
 import { Component, signal } from '@angular/core';
-import { Counter } from './counter/counter';
 import { Card } from "../../core/components/card/card";
+import { CounterList } from './counter-list/counter-list';
 
 @Component({
   selector: 'ind-dashboard-page',
-  imports: [Counter, Card],
+  imports: [CounterList, Card],
   template: `
     <h2>{{ pageTitle() }}</h2>
-    <ind-card [title]="title()">
-      <ind-counter />
+    <ind-card>
+      <ind-counter-list />
     </ind-card>
 
     `,
@@ -17,6 +17,4 @@ import { Card } from "../../core/components/card/card";
 })
 export default class DashboardPage {
     protected readonly pageTitle = signal('Dashboard');
-    protected readonly title = signal({ title: 'Contador', level: 3 as const });
-
 }

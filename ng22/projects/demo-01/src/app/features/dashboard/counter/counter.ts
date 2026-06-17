@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, output, signal } from '@angular/core';
 
 const LIMIT = 5;
 
@@ -48,6 +48,12 @@ export class Counter {
   protected readonly value = signal(0);
   protected readonly limit = signal(LIMIT);
 
+  // @Output() 
+  
+  protected readonly countEvent = output<number>()
+  
+  // new EventEmitter<number>();
+
   protected changeValue(delta = 1) {
     if (delta === 0) {
       this.value.set(0);
@@ -55,5 +61,6 @@ export class Counter {
       this.value.update((current) => current + delta);
       // this.value.set(this.value() + delta);
     }
+    this.countEvent.emit(delta);
   }
 }
