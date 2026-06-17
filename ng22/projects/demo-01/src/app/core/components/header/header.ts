@@ -20,7 +20,7 @@ import { SearchRef } from '../search/search.ref';
       </hgroup>
       <div class="right-side">
         <div class="icons">
-          <ind-menu-mobile class="desktop-only" />
+          <ind-menu-mobile class="mobile-only" />
           <ind-user />
         </div>
         <ind-toggle />
@@ -29,8 +29,8 @@ import { SearchRef } from '../search/search.ref';
         <p>{{ subtitle() }}</p>
         <ind-search class="mobile-only" />
         <div class="desktop-only">
-          <ind-search-ref />
           <ng-content></ng-content>
+          <ind-search-ref />
         </div>
       </div>
     </header>
@@ -96,6 +96,8 @@ import { SearchRef } from '../search/search.ref';
           display: none;
         }
       }
+
+
     `,
     `
       /*
@@ -106,7 +108,7 @@ import { SearchRef } from '../search/search.ref';
           max-width: none;
         }
 
-        alc-menu-mobile,
+        ind-menu-mobile,
         .mobile-only {
           display: none;
         }
