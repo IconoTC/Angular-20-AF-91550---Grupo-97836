@@ -1,15 +1,18 @@
+import { DatePipe, TitleCasePipe } from '@angular/common';
 import { Component, signal, ViewEncapsulation } from '@angular/core';
+import { Stick } from '../../directives/stick';
 
 @Component({
   encapsulation: ViewEncapsulation.Emulated,
   selector: 'ind-footer',
-  imports: [],
+  imports: [DatePipe, TitleCasePipe, Stick],
   template: `
     <footer>
       <address>
-        <p>{{ autor() }}</p>
-        <p>{{ brand() }} © {{ today().getFullYear() }}</p>
+        <p indStick="pink">{{ autor() }}</p>
+        <p indStick>{{ brand() }} © {{ today().getFullYear() }}</p>
       </address>
+      <p>{{ today() | date : 'fullDate' | titlecase }}</p>
       <ng-content select='ind-socials' />
     </footer>
   `,
