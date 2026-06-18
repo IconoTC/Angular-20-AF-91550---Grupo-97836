@@ -242,20 +242,23 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Input. Decoradores @Input. función input(). Drilling
   - Output. Decorador @Output. EventEmitter. Función output(). Eventos del contador
   - 🧿CounterList. Agrupando contadores. Estado en el componente padre
-  - Contadores. Eventos con valor. Computed signals 
+  - Contadores. Eventos con valor. 
  
 
 ### Día 4 (J-18). Rutas. Arquitectura de componentes. Formularios TD
 
-<!-- 
 - Comunicación entre componentes (continuación)
-  - Intput en los contadores. Revision de los totales
-  - Test de inputs y outputs. 
--->
+  - Input en los contadores. Revision de los totales
+  - Computed signals 
 
-<!-- Mitad del día 3 en versión anterior repartida en el día
-¿Directivas y pipes antes de las rutas?
--->
+  - Test de inputs y outputs. 
+
+- Signal model()
+  - Componente 🧿Check. Input y Output.Design System CheckBox
+  - Componente 🧿Terms. Input y Output. Comunicación entre componentes
+  - Uso de model en esta situación
+
+- [Descanso] - 11:05 - 11:35
 
 <!-- 
 - Rutas básicas. `app.routes.ts`
@@ -275,9 +278,6 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 <!-- - Pipes. Location "es" -->
 
 <!-- - ¿Directivas? -->
-
-
-- [Descanso] - 11:05 - 11:35
 
 <!-- 
 - Arquitectura de componentes
