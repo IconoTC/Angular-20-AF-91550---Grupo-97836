@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { Header } from './header';
 import { By } from '@angular/platform-browser';
+import { Header } from './header';
 
 describe('Header', () => {
   let component: Header;
@@ -13,6 +12,8 @@ describe('Header', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(Header);
+    fixture.componentRef.setInput('headerTitle', 'Test title');
+    fixture.componentRef.setInput('subtitle', 'Test subtitle');
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
@@ -26,8 +27,9 @@ describe('Header', () => {
     const debugElement = fixture.debugElement;
     const titleElement = debugElement.query(By.css('.title'));
     const subtitleElement = debugElement.query(By.css('.bottom-row p'));
-    expect(titleElement.nativeElement.textContent).toBe('Curso de Angular 22');
-    expect(subtitleElement.nativeElement.textContent).toBe('Aprende a desarrollar aplicaciones con Angular');
+    expect(titleElement.nativeElement.textContent).toBe('Test title');
+    expect(subtitleElement.nativeElement.textContent).toBe(
+      'Test subtitle',
+    );
   });
-
 });

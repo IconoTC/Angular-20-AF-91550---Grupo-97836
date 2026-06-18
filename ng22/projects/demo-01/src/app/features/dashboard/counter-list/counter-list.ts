@@ -10,10 +10,12 @@ import { Counter } from '../counter/counter';
     <p>Total de clicks : {{ totalClicks() }}</p>
     <div>
       <ind-card [title]="title()">
-        <ind-counter (countEvent)="counterChange($event)" />
+        <ind-counter [id]="110" (countEvent)="counterChange($event)"
+        (resetEvent)="counterReset($event)" />
       </ind-card>
-      <ind-card [title]="title()">
-        <ind-counter (countEvent)="counterChange($event)" />
+      <ind-card  [title]="title()">
+        <ind-counter [id]="125" (countEvent)="counterChange($event)"
+        (resetEvent)="counterReset($event)" />
       </ind-card>
     </div>
   `,
@@ -31,6 +33,11 @@ export class CounterList {
 
   protected counterChange(delta: number) {
     this.totalValue.update((current) => current + delta);
+    this.totalClicks.update((current) => current + 1);
+  }
+
+  protected counterReset(value: number) {
+    this.totalValue.update((current) => current - value);
     this.totalClicks.update((current) => current + 1);
   }
 }
