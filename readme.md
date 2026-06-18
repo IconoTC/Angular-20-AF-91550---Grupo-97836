@@ -243,14 +243,12 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Output. Decorador @Output. EventEmitter. Función output(). Eventos del contador
   - 🧿CounterList. Agrupando contadores. Estado en el componente padre
   - Contadores. Eventos con valor. 
- 
 
 ### Día 4 (J-18). Rutas. Arquitectura de componentes. Formularios TD
 
 - Comunicación entre componentes (continuación)
   - Input en los contadores. Revision de los totales
   - Computed signals 
-
   - Test de inputs y outputs. 
 
 - Signal model()
@@ -260,7 +258,6 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 - [Descanso] - 11:05 - 11:35
 
-<!-- 
 - Rutas básicas. `app.routes.ts`
   - Array de rutas.
   - Array de opciones de menu
@@ -268,16 +265,24 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Navegación. Componente menu. @for
   - SPA: RouterLink y RouterLinkActive
 - Rutas Lazy. Default import en las páginas
- -->
+
+- Pipes. 
+  - DatePipe. Location "es"
+- Directivas. Directivas propias
+  - Directivas de atributo: Stick
+  - Directivas estructurales: introducción
+
+
+### Día 5 (V-19).  Servicios. Providers e injectors. Formularios DD
+
+<!-- Extras y final del Dia 3 en versión anterior -->
+
+<!-- - Directivas estructurales: ejemplo -->
 
 <!-- 
  - 🧿Modal y menu mobile: Inputs + Outputs. Comunicación indirecta entre componentes
   (Podría ir después de rutas)
  -->
-
-<!-- - Pipes. Location "es" -->
-
-<!-- - ¿Directivas? -->
 
 <!-- 
 - Arquitectura de componentes
@@ -290,8 +295,6 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Componente Tasks-Item. Input y Output (Eventos)
   - Componente Tasks-Form. Output (Eventos) - Mock sin formulario
 -->
-
-### Día 5 (V-19).  Servicios. Providers e injectors. Formularios DD
 
 <!-- Dia 4 en versión anterior -->
 
