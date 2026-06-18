@@ -1,19 +1,20 @@
-import { Component, input  } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MenuOption } from '../../types/menu-option';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'ind-menu',
-  imports: [],
-  template: ` 
-  <nav class="menu">
-    <ul>
-      @for (option of options(); track option.label) {
-        <li>
-          <a [href]="option.path">{{ option.label }}</a>
-        </li>
-      }
-    </ul>
-  </nav>
+  imports: [RouterLink, RouterLinkActive],
+  template: `
+    <nav class="menu">
+      <ul>
+        @for (option of options(); track option.label) {
+          <li>
+            <a [routerLink]="option.path" [routerLinkActive]="'active'">{{ option.label }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
   `,
   styles: `
     nav {
@@ -30,9 +31,16 @@ import { MenuOption } from '../../types/menu-option';
         text-decoration: none;
         font-weight: bold;
       }
-    }`,
+    }
+    .active {
+      color: var(--color-primary-hot);
+      border-bottom: 2px solid var(--color-primary-hot);
+      display: inline-block;
+      transform: scale(1.1);
+      transition: all 0.3s ease-in-out;
+    }
+  `,
 })
 export class Menu {
-
   readonly options = input.required<MenuOption[]>();
 }
