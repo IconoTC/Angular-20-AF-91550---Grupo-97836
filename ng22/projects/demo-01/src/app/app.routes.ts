@@ -23,24 +23,25 @@ export const routes: Routes = [
     },
     loadComponent: () => import('./features/dashboard/dashboard-page'),
   },
-  // {
-  //   path: 'products',
-  //   title: 'Products | Demo 01',
-  //   data: {
-  //     label: 'Products',
-  //   },
-  //   loadComponent: () => import('./features/products/products-page'),
-  //   children: [
-  //     {
-  //       path: 'details',
-  //       title: 'Product Details | Demo 01',
-  //       data: {
-  //         label: 'Product Details',
-  //       },
-  //       loadComponent: () => import('./features/products/product-details-page'),
-  //     },
-  //   ],
-  // },
+  {
+    path: 'notes',
+    title: 'Notes | Demo 01',
+    data: {
+      label: 'Notes',
+    },
+    loadComponent: () => import('./features/notes/notes-page'),
+    children: [
+      {
+        path: 'details/:id',
+        title: 'Note Details | Demo 01',
+        data: {
+          label: 'Note Details',
+        },
+        loadComponent: () => import('./features/notes/notes-page'),
+        // loadComponent: () => import('./features/notes/note-details-page'),
+      },
+    ],
+  },
   {
     path: 'about',
     title: 'About | Demo 01',
