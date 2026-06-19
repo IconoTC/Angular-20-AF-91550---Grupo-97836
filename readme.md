@@ -293,32 +293,31 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 - [Descanso] 11:00 - 11:30
 
-<!-- Dia 4 en versión anterior - Antes del descanso
-
-- Signal Forms
+- Componente Notes-Form. Validaciones 
 
 - Introducción a los servicios en Angular.
 - Servicios y Providers. DI (Dependency Injection)
   - Provider root v. provider en un componente / ruta
   - Ejemplo con un servicio simple: Time
   - Injector jerárquico. Servicios singleton y no singleton.
- -->
 
-<!-- 
 - Servicios y patrón Repository
   - Mock de datos. Interface de los repositorios
   - Uso de promesas y observables (RxJS) en los servicios.
-  - Servicio LocalNotesRepository: Repositorio y persistencia local (localStorage).
-  - Uso en los componentes. Inyección de dependencias.
+  - Servicio TasksStore: Repositorio in-memory.
   - Repositorio y lógica de negocio (estado). Estrategias 
   - Métodos CRUD. getAll() y getById()
   - Métodos CRUD. add(), update(), delete()
+  - Uso en los componentes. Inyección de dependencias.
+
+<!-- 
+  - Servicio LocalNotesRepository: Repositorio y persistencia local (localStorage).
+ -->
 
 - RxJS (Observables)
   - Introducción. Observables, subscription, operadores.
   - Los mismos repositorios usando RxJS (Observables). 
   - Uso del repo en el componente
- -->
 
   <!-- - Testing de servicios.
     - Tests del servicio
@@ -326,12 +325,9 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
       - Test de promesas (async, whenStable, expectAsync).
     - Testing de componentes con servicios (mocks y spies). -->
 
-<!-- 
-- Formularios reactivos (DD). RegisterForm
+- Formularios reactivos (DD). LoginForm
   - FormGroup, FormControl, FormBuilder
   - Binding desde el template 
- -->
-
 
 ### Día 6 (L-22). Servicios HTTP. Arquitectura ¿despliegue?
 
@@ -339,10 +335,11 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 <!-- 
 - Formularios reactivos (continuación).
-
-  - RegisterForm. Otros controles HTML
   - Validaciones síncronas (y asíncronas).
     - Mensajes de validación 
+
+- Signal Forms.
+  - RegisterForm. Otros controles HTML
 -->
 
 <!-- - Testing de formularios reactivos. -->
