@@ -1,11 +1,12 @@
 import { Component, signal } from '@angular/core';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'ind-user',
-  imports: [],
+  imports: [RouterLink],
   template: `
     <nav>
-      <a href="#" id="menu-icon" (click)="toggleUser()">
+      <a [routerLink]="['user','login']" id="menu-icon" (click)="toggleUser()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 640 640"
