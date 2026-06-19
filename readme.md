@@ -252,7 +252,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Test de inputs y outputs. 
 
 - Signal model()
-  - Componente 🧿Check. Input y Output.Design System CheckBox
+  - Componente 🧿Check. Input y Output. Design System CheckBox
   - Componente 🧿Terms. Input y Output. Comunicación entre componentes
   - Uso de model en esta situación
 
@@ -265,19 +265,17 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Navegación. Componente menu. @for
   - SPA: RouterLink y RouterLinkActive
 - Rutas Lazy. Default import en las páginas
+- Comentado: guards, resolvers, rotas anidadas
 
-- Pipes. 
-  - DatePipe. Location "es"
+- Pipes
+  - DatePipe. Location "es". Usar por defecto: inyección de dependencias
 - Directivas. Directivas propias
   - Directivas de atributo: Stick
   - Directivas estructurales: introducción
 
-
 ### Día 5 (V-19).  Servicios. Providers e injectors. Formularios DD
 
-<!-- Extras y final del Dia 3 en versión anterior -->
-
-<!-- - Directivas estructurales: ejemplo -->
+- Directivas estructurales: ejemplo
 
 <!-- 
  - 🧿Modal y menu mobile: Inputs + Outputs. Comunicación indirecta entre componentes
