@@ -29,7 +29,7 @@ export const routes: Routes = [
     path: 'notes',
     title: 'Notes | Demo 01',
     data: {
-      label: 'Notes',
+      label: 'Notas',
     },
     loadComponent: () => import('./features/notes/notes-page'),
     children: [
@@ -43,6 +43,29 @@ export const routes: Routes = [
         // loadComponent: () => import('./features/notes/note-details-page'),
       },
     ],
+  },
+  {
+    path: 'tasks',
+    title: 'Tasks | Demo 01',
+    data: {
+      label: 'Tareas',
+    },
+    loadComponent: () => import('./features/tasks/tasks-page'),
+  },
+  {
+    path: 'user',
+    children: [
+      {
+        path: 'login',
+        title: 'Users | Demo 01',
+        loadComponent: () => import('./features/auth/login-page').then((m) => m.LoginPage),
+      },
+      {
+        path: 'register',
+        title: 'Users | Demo 01',
+        loadComponent: () => import('./features/auth/register-page').then((m) => m.RegisterPage),
+      }
+    ]
   },
   {
     path: 'about',
