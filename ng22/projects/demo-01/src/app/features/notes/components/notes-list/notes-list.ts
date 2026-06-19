@@ -1,4 +1,3 @@
-import { JsonPipe } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { NoteItem } from '../note-item/note-item';
 import { NoteForm } from '../note-form/note-form';
@@ -7,16 +6,16 @@ import NOTES from '../../data/notes-mock.json';
 
 @Component({
   selector: 'ind-notes-list',
-  imports: [NoteItem, NoteForm, JsonPipe],
+  imports: [NoteItem, NoteForm],
   template: `
     @if (isLoading()) {
       <p>Loading notes...</p>
     } @else if (error()) {
       <p>Error: {{ error() }}</p>
     } @else {
-      <details>
+      <details #details>
         <summary>Add Note</summary>
-        <ind-note-form />
+        <ind-note-form (addEvent)="add($event)" />
       </details>
       <div class="notes-list">
       @for (note of notes(); track note.id) {
@@ -27,7 +26,7 @@ import NOTES from '../../data/notes-mock.json';
       }
       </div>
     }
-    <pre>{{ notes() | json }}</pre>
+    <!-- <pre>{{ notes() | json }}</pre> -->
   `,
   styles: `
   .notes-list {
@@ -57,5 +56,10 @@ export class NotesList {
     this.notes.set(
       this.notes().map((note) => (note.id === updatedNote.id ? updatedNote : note))
     );
+  }
+
+  add(newNote: Omit<Note, 'id'>) {
+    const id = crypto.randomUUID().slice(0, 6);
+    this.notes.set([...this.notes(), { ...newNote, id }]);
   }
 }
