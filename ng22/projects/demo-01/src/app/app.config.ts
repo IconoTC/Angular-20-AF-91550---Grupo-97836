@@ -7,6 +7,7 @@ import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeES, 'es');
 
 import { routes } from './app.routes';
+import { TimeOld } from './core/services/time';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     {
       provide: LOCALE_ID, useValue: 'es'
-    }
+    },
+    TimeOld,
+    //  {
+    //   provide: TimeOld, useClass: TimeOld
+    // },
   ],
 };

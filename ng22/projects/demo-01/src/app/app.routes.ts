@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { MenuOption } from './core/types/menu-option';
+import { TimeOld } from './core/services/time';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,7 @@ export const routes: Routes = [
       label: 'Dashboard',
     },
     loadComponent: () => import('./features/dashboard/dashboard-page'),
+    providers: [TimeOld],
   },
   {
     path: 'notes',

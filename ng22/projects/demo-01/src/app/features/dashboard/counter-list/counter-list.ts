@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Card } from '../../../core/components/card/card';
 import { Counter } from '../counter/counter';
+import { Time, TimeOld } from '../../../core/services/time';
 
 @Component({
   selector: 'ind-counter-list',
@@ -30,6 +31,14 @@ export class CounterList {
   protected readonly title = signal({ title: 'Contador', level: 3 as const });
   protected readonly totalValue = signal(0);
   protected readonly totalClicks = signal(0);
+
+  private readonly ts = inject(Time);
+   private readonly tso = inject(TimeOld);
+
+  constructor() {
+    console.log('CounterList constructor:', this.ts.getTime());
+    console.log('CounterList constructor (old):', this.tso.getTime());
+  }
 
   protected counterChange(delta: number) {
     this.totalValue.update((current) => current + delta);

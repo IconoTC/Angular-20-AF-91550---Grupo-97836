@@ -1,8 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Card } from '../../core/components/card/card';
 import { Sample } from './components/sample/sample';
 import { Terms } from './components/terms/terms';
 import { Info } from './components/info/info';
+import { Time, TimeOld } from '../../core/services/time';
 
 @Component({
   selector: 'ind-home-page',
@@ -30,4 +31,12 @@ import { Info } from './components/info/info';
 })
 export default class HomePage {
   protected readonly pageTitle = signal('Home');
+  private readonly ts = inject(Time);
+  private readonly tso = inject(TimeOld);
+
+  // constructor(private readonly ts: Time) {
+  constructor() {
+    console.log('HomePage constructor:', this.ts.getTime());
+    console.log('HomePage constructor (old):', this.tso.getTime());
+  }
 }
