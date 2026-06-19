@@ -2,10 +2,11 @@ import { Component, signal } from '@angular/core';
 import { Card } from '../../core/components/card/card';
 import { Sample } from './components/sample/sample';
 import { Terms } from './components/terms/terms';
+import { Info } from './components/info/info';
 
 @Component({
   selector: 'ind-home-page',
-  imports: [Sample, Terms, Card],
+  imports: [Sample, Terms, Card, Info],
   template: `
     <section class="page">
       <h2>{{ pageTitle() }}</h2>
@@ -15,6 +16,7 @@ import { Terms } from './components/terms/terms';
       <ind-card>
         <ind-terms />
       </ind-card>
+      <ind-info />
     </section>
   `,
   styleUrls: ['../pages.css'],
