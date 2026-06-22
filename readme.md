@@ -17,13 +17,13 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 ## Temario
 
-- `Introducción a Angular y preparación del entorno `
+- Introducción a Angular y preparación del entorno 
   - `¿Qué es Angular y qué resuelve? `
   - `Angular: fundamentos clave`
   - `Angular vs otros frameworks` 
   - `Preparar el entorno` 
   - `Crear el primer proyecto Angular` 
-- `Componentes en profundidad` 
+- Componentes en profundidad 
   - `Declaración de Componentes y Standalone Components`
   - `Comunicación entre componentes con @Input y @Output` 
   - `Ciclo de vida del componente` 
@@ -43,23 +43,23 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Guards básicos 
   - Caso práctico: aplicación de un restaurante 
 - Servicios e inyección de dependencias
-  - Introducción a los servicios 
-  - Creación e inyección de servicios
-  - Ámbito y ciclo de vida de servicios 
-  - Comunicación HTTP con HttpClient 
-  - Manejo básico de errores en peticiones HTTP 
+  - `Introducción a los servicios` 
+  - `Creación e inyección de servicios`
+  - `Ámbito y ciclo de vida de servicios` 
+  - `Comunicación HTTP con HttpClient` 
+  - `Manejo básico de errores en peticiones HTTP` 
   - Interceptors HTTP para manejo global de peticiones y errores 
   - Lazy services y carga perezosa de servicios 
 - Formularios template-driven 
   - `Estructura básica de formularios template-driven` 
   - `Binding y sincronización con ngModel` 
   - `Validaciones básicas en formularios template-driven` 
-  - Mostrar mensajes de error
+  - `Mostrar mensajes de error`
   - Formularios anidados simples 
 - Formularios reactivos 
-  - Introducción a formularios reactivos 
-  - Validaciones reactivas 
-  - Manejo programático de errores 
+  - `Introducción a formularios reactivos` 
+  - `Validaciones reactivas` 
+  - `Manejo programático de errores` 
   - Validadores personalizados 
   - Validación de formularios complejos 
 - Signals y estado reactivo 
@@ -67,14 +67,14 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - `API básica de Signals` 
   - `Estado local reactivo sin necesidad de Observables` 
   - `Uso de Signals en templates Angular` 
-  - Diferencias entre Signals y RxJS
-  - Integración y coexistencia entre Signals y RxJS
+  - `Diferencias entre Signals y RxJS`
+  - `Integración y coexistencia entre Signals y RxJS`
 - Comunicación avanzada y manejo de estado 
   - Comunicación entre componentes hermanos 
   - Comparativa: EventEmitter vs Subject 
-  - Patrones de arquitectura recomendados para manejo de estado
-  - Uso básico de BehaviorSubject y Signals compartidos 
-  - Introducción a estado compartido simple sin NgRx 
+  - `Patrones de arquitectura recomendados para manejo de estado`
+  - `Uso básico de BehaviorSubject y Signals compartidos` 
+  - `Introducción a estado compartido simple sin NgRx` 
   - Conceptos de gestión de estado reactivo a mayor escala (sin librerías externas) 
 - Testing de componentes y servicios 
   - `Importancia de testear en Angular`
@@ -93,7 +93,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Monorepos y herramientas para proyectos grandes (Nx) 
   - Buenas prácticas de seguridad en Angular 
 - Despliegue y optimización para producción 
-  - Variables de entorno 
+  - `Variables de entorno` 
   - Comandos de build para producción 
   - Técnicas de lazy loading para mejorar performance 
   - Opciones populares para despliegue 
@@ -281,7 +281,6 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - Componentes de contenedores vs de presentación.
   - Componentes inteligentes vs tontos.
 
-
 - Ejemplo: Notes List
   - Entidad Notes. Modelo y mock de datos asíncrono.
   - Componente Notes-List. Lógica del estado
@@ -331,21 +330,19 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 ### Día 6 (L-22). Servicios HTTP. Arquitectura ¿despliegue?
 
-<!-- Dia 5 en versión anterior -->
 
-<!-- 
 - Formularios reactivos (continuación).
   - Validaciones síncronas (y asíncronas).
     - Mensajes de validación 
 
 - Signal Forms.
   - RegisterForm. Otros controles HTML
--->
 
 <!-- - Testing de formularios reactivos. -->
 
-<!-- 
 - Introducción a los servicios HTTP en Angular.
+
+<!-- 
 
 - API server fake basado en JSONServer.
   - Prueba con Postman
