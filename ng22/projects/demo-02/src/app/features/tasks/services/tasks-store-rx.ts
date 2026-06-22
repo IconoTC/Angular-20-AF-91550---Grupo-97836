@@ -1,54 +1,64 @@
-import { Service } from '@angular/core';
-import { StoreRx } from '../../../core/types/store.rx';
+import { DestroyRef, inject, Service } from '@angular/core';
 import { Task } from '../entities/task';
-import { delay, Observable, of } from 'rxjs';
-import TASKS from '../data/tasks-mock.json';
+import { BehaviorSubject, delay } from 'rxjs';
+import { ApiRepo } from './api-repo';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Service()
-export class TasksStoreRx implements StoreRx<Task> {
-  private tasks: Task[] = TASKS;
-  private mockDelay = 500
+export class TasksStoreRx {
+  readonly #repo = inject(ApiRepo);
+  readonly #destroyRef = inject(DestroyRef);
+  readonly #tasks = new BehaviorSubject<Task[]>([]);
+  readonly tasks$ = this.#tasks.asObservable();
+  readonly #mockDelay = 500;
 
-  get(): Observable<Task[]> {
-    return of(this.tasks).pipe(
-      delay(this.mockDelay)
-    );
+  get() {
+    this.#repo
+      .get()
+      .pipe(delay(this.#mockDelay))
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe({
+        next: (tasks) => this.#tasks.next(tasks),
+        error: (error) => this.#tasks.error(error),
+      });
   }
 
-  getById(id: Task['id']): Observable<Task> {
-    const task = this.tasks.find((task) => task.id === id);
-    if (!task) {
-      throw new Error(`Task with ID ${id} not found`);
-    }
-    return of(task).pipe(
-      delay(this.mockDelay) // Simulamos un retraso de 500 milisegundos para la carga de la tarea
-    );
+  add(newTask: Omit<Task, 'id'>) {
+    this.#repo
+      .add(newTask)
+      .pipe(delay(this.#mockDelay))
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe({
+        next: (task) => {
+          const currentTasks = this.#tasks.getValue();
+          this.#tasks.next([...currentTasks, task]);
+        },
+      });
   }
 
-  add(newTask: Omit<Task, 'id'>): Observable<Task> {
-    const id = crypto.randomUUID().slice(0, 6);
-    const task: Task = { ...newTask, id };
-    this.tasks = [...this.tasks, task];
-    return of(task).pipe(
-      delay(this.mockDelay) // Simulamos un retraso de 500 milisegundos para la adición de la tarea
-    );
+  delete(id: Task['id']) {
+    this.#repo
+      .delete(id)
+      .pipe(delay(this.#mockDelay))
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe({
+        next: () => {
+          const currentTasks = this.#tasks.getValue();
+          this.#tasks.next(currentTasks.filter((task) => task.id !== id));
+        },
+      });
   }
 
-  delete(id: Task['id']): Observable<void> {
-    this.tasks = this.tasks.filter((task) => task.id !== id);
-    return of(undefined).pipe(
-      delay(this.mockDelay) // Simulamos un retraso de 500 milisegundos para la eliminación de la tarea
-    );
-  }
-
-  update(updatedTask: Task): Observable<Task> {
-    this.tasks = this.tasks.map((task) =>
-      task.id === updatedTask.id ? updatedTask : task
-    );
-    return of(this.tasks.find((task) => task.id === updatedTask.id) as Task).pipe(
-      delay(this.mockDelay) // Simulamos un retraso de 500 milisegundos para la actualización de la tarea
-    );
+  update(updatedTask: Task) {
+    this.#repo
+      .update(updatedTask)
+      .pipe(delay(this.#mockDelay))
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe({
+        next: (task) => {
+          const currentTasks = this.#tasks.getValue();
+          this.#tasks.next(currentTasks.map((t) => (t.id === task.id ? task : t)));
+        },
+      });
   }
 }
-
-
