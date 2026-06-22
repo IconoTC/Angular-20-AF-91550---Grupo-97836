@@ -1,9 +1,10 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { NoteItem } from '../note-item/note-item';
 import { NoteForm } from '../note-form/note-form';
 import { Note } from '../../entities/note';
 import { ApiRepo } from '../../services/api-repo';
 import { HttpErrorResponse } from '@angular/common/http';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'ind-notes-list',
@@ -41,13 +42,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class NotesList {
   readonly repo = inject(ApiRepo);
+  readonly #destroyRef = inject(DestroyRef);
 
   protected readonly notes = signal<Note[]>([]);
   protected readonly isLoading = signal<boolean>(true);
   protected readonly error = signal<string | null>(null);
 
   constructor() {
-    this.repo.get().subscribe({
+    this.repo.get()
+    .pipe(
+      takeUntilDestroyed(this.#destroyRef)
+    )
+    .subscribe({
       next: (notes) => {
         // En caso de Observable exitoso
         this.notes.set(notes);
@@ -103,3 +109,5 @@ export class NotesList {
     });
   }
 }
+
+
