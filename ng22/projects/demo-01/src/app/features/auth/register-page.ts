@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { UserRegister } from './types/register';
-import { form, FormField, FormRoot, required } from '@angular/forms/signals';
+import { email, form, FormField, FormRoot, required } from '@angular/forms/signals';
 import { JsonPipe } from '@angular/common';
 
 @Component({
@@ -16,13 +16,14 @@ import { JsonPipe } from '@angular/common';
       @if (reRegisterForm.email()?.invalid() && reRegisterForm.email()?.touched()) {
         <div class="error">
           <p>Email is required.</p>
-          <!-- @if (reRegisterForm.email().errors()[0]?.['required']) {
+          @if (reRegisterForm.email().errors()[0].kind === 'required') {
             <p>Email is required.</p>
-          } @else if (reRegisterForm.email()?.hasError('email')) {
+          } @else if (reRegisterForm.email().errors()[0].kind === 'email') {
             <p>Please enter a valid email address.</p>
-          } -->
+          }
         </div>
       }
+
       <label for="passwd" class="form-group">
         Password
         <input type="password" [formField]="reRegisterForm.password" />
@@ -39,7 +40,7 @@ import { JsonPipe } from '@angular/common';
         <input type="checkbox" [formField]="reRegisterForm.isOk" />
         Accept Terms ...
       </label>
-      <button type="submit" [disabled]="reRegisterForm().invalid()">Register</button>
+      <button type="submit" [disabled]="reRegisterForm">Register</button>
     </form>
     <pre>{{ reRegisterForm().value() | json }}</pre>
   `,
@@ -72,7 +73,8 @@ export class RegisterPage {
 
   protected readonly user = signal<UserRegister>(this.#initialValues);
   protected readonly reRegisterForm = form(this.user, (schema) => {
-    required(schema.email)
+    required(schema.email);
+    email(schema.email);
   });
 
   submitForm() {
