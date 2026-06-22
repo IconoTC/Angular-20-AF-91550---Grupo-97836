@@ -71,7 +71,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - `Integración y coexistencia entre Signals y RxJS`
 - Comunicación avanzada y manejo de estado 
   - Comunicación entre componentes hermanos 
-  - Comparativa: EventEmitter vs Subject 
+  - `Comparativa: EventEmitter vs Subject` 
   - `Patrones de arquitectura recomendados para manejo de estado`
   - `Uso básico de BehaviorSubject y Signals compartidos` 
   - `Introducción a estado compartido simple sin NgRx` 
@@ -80,7 +80,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
   - `Importancia de testear en Angular`
   - `Configuración del entorno de testing` 
   - `Pruebas de componentes` 
-  - Pruebas de servicios 
+  - `Pruebas de servicios` 
   - Pruebas de formularios 
   - `Introducción a pruebas end-to-end (E2E) con Cypress o Playwright` 
 - Arquitectura escalable y buenas prácticas 
@@ -342,7 +342,7 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 
 - Introducción a los servicios HTTP en Angular.
 
-<!-- 
+- Nuevo proyecto (demo-02). 
 
 - API server fake basado en JSONServer.
   - Prueba con Postman
@@ -350,54 +350,49 @@ Curso de Angular 22, versión publicada el 3 de Junio de 2026.
 - Instalación y uso de environments. 
   - Configuración de la URL base del API.
 
-- Servicio HttpClientModule. Observables (RxJs).
+- Servicio HttpClient. Observables (RxJs).
 
-  - Creación de un ApiRepositoryService.
   - Antes de Angular 21: Configuración del servicio HTTP: provider
+  - Feature Notes. Creación de un ApiRepositoryService.
+
+- [Descanso] 11:00 - 11:30
+
+- Servicio HttpClient. Observables (RxJs).
   - Uso desde el componente (NoteList).  
- -->
+
+- Tests de servicios HTTP real (sin mock)
 
 <!--
-- Servicio HttpClientModule. Observables (RxJs).
+
   - Tests de servicios HTTP con HttpTestingController
   - Test de componentes con servicios HTTP (mocks y spies).
 -->
-
-- [Descanso] 11:00 - 11:30
  
-<!-- 
-- Servicios stateful: patrón Flux
-
-- Nuevo proyecto (demo-02). Feature Notes
+- Servicios stateful: patrón Flux. Feature Tasks
 
   - Estado con RxJS: Subjects
     - Estado privado con BehaviorSubject
     - Estado público con Observable (asObservable)
     - Métodos para modificar el estado (add, toggle, remove)
+    - Gestión de errores
   
+- Uso desde cualquier parte de la aplicación (Header) 
   
   - Estado con Signals: signal (WriteableSignal) y readOnly/computed (Signal)
   
-  - Servicio Store con NotesState
+  - Servicio Store con TasksState
     - Estado privado con WriteableSignal
     - Estado público con Signal (asReadOnly)
-    - Métodos para modificar el estado (add, toggle, remove)
-
-- Uso del estado desde los componentes ToDo...
-- Gestión de errores
-- Uso desde cualquier parte de la aplicación (Header) 
+    <!-- Métodos para modificar el estado (add, toggle, remove) -->
+    - Uso del estado desde los componentes ToDo...
 
 - Más novedades (Signals)
-  - resources: httResource (Angular 22)
+  - resources: httpClientResource (Angular 22)
   - linkedSignals
-- Directivas propias
 - Interceptors y Guards
 - Testing
 
  <!-- 
  - 🧿Modal y menu mobile: Inputs + Outputs. Comunicación indirecta entre componentes
-  (Podría ir después de rutas)
- -->
-
-
- -->
+  (Podría ir después de rutas)ç
+-->
