@@ -1,6 +1,6 @@
 import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -9,13 +9,32 @@ import { RouterLink } from '@angular/router';
   template: `
     <h1>Login</h1>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <label for="username">Username:</label>
-      <input type="text" id="username" formControlName="username" />
-      <br />
-      <label for="password">Password:</label>
-      <input type="password" id="password" formControlName="password" />
-      <br />
-      <button type="submit">Login</button>
+      <label for="username"
+        >Username:
+        <input type="text" id="username" formControlName="username" />
+      </label>
+
+      @if (loginForm.controls['username']?.invalid && loginForm.controls['username']?.touched) {
+        <div class="error">
+          @if (loginForm.controls['username']?.errors?.['required']) {
+            <p>El nombre de usuario es obligatorio</p>
+          }
+        </div>
+      }
+      <label for="password">
+        Password:
+        <input type="password" id="password" formControlName="password" />
+      </label>
+      @if (loginForm.controls['password']?.invalid && loginForm.controls['password']?.touched) {
+        <div class="error">
+          @if (loginForm.controls['password']?.errors?.['required']) {
+            <p>La contraseña es obligatoria</p>
+          } @else if (loginForm.controls['password']?.errors?.['minlength']) {
+            <p>La contraseña debe tener al menos 6 caracteres</p>
+          }
+        </div>
+      }
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
     </form>
 
     <pre>{{ loginForm.value | json }}</pre>
@@ -28,7 +47,23 @@ import { RouterLink } from '@angular/router';
       <a [routerLink]="['/user', 'register']">registro</a>
     </p>
   `,
-  styles: ``,
+  styles: `
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-block: 1rem;
+    }
+    label {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+    .error {
+      color: red;
+      font-size: 0.875rem;
+    }
+  `,
 })
 export class LoginPage {
   private fb = inject(FormBuilder);
@@ -40,11 +75,11 @@ export class LoginPage {
   // });
 
   protected loginForm: FormGroup = this.fb.group({
-    username: [''],
-    password: [''],
+    username: ['', [Validators.required]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   onSubmit() {
-    //
+    console.log('Form submitted:', this.loginForm.value);
   }
 }
