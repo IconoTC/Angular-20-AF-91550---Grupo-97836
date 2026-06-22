@@ -15,20 +15,16 @@ import { TasksStoreRx } from '../../services/tasks-store-rx';
     } @else {
       <details #details>
         <summary>Add Task</summary>
-        <ind-task-form (addEvent)="add($event)" />
+        <ind-task-form />
       </details>
       <div class="tasks-list">
         @for (task of tasks(); track task.id) {
           <!-- <ind-task-item [task]="task" (deleteEvent)="delete($event)" /> -->
-          <ind-task-item
-            [task]="task"
-            (deleteEvent)="delete(task.id)"
-            (changeEvent)="change($event)"
-          />
+          <ind-task-item [task]="task" />
         }
       </div>
     }
-    <p>Lista que utiliza Observable de RxJS</p>
+    <p>Lista que utiliza el servicio con Observable de RxJS</p>
     <!-- <pre>{{ tasks() | json }}</pre> -->
   `,
   styles: `
@@ -40,14 +36,14 @@ import { TasksStoreRx } from '../../services/tasks-store-rx';
   `,
 })
 export class TasksList {
+  private tasksStore = inject(TasksStoreRx);
+
   protected tasks = signal<Task[]>([]);
   protected isLoading = signal<boolean>(true);
   protected error = signal<string | null>(null);
 
-  private tasksStore = inject(TasksStoreRx);
-
   constructor() {
-    this.tasksStore.get().subscribe({
+    this.tasksStore.tasks$.subscribe({
       next: (tasks) => {
         this.tasks.set(tasks);
         this.isLoading.set(false);
@@ -57,40 +53,7 @@ export class TasksList {
         this.error.set(error.message);
       },
     });
-  }
 
-  add(newTask: Omit<Task, 'id'>) {
-    // const task = this.tasksStore.addTask(newTask);
-    // this.tasks.set([...this.tasks(), task]);
 
-    // Alternativa: actualizamos a la última version del store
-    this.tasksStore.add(newTask);
-    this.tasksStore.get().subscribe({
-      next: (tasks) => {
-        this.tasks.set(tasks);
-      }
-    });
-  }
-
-  delete(id: Task['id']) {
-    this.tasksStore.delete(id);
-    // this.tasks.set(this.tasks().filter((task) => task.id !== id));
-    this.tasksStore.get().subscribe({
-      next: (tasks) => {
-        this.tasks.set(tasks);
-      }
-    });
-  }
-
-  change(updatedTask: Task) {
-    // const updated = this.tasksStore.updateTask(updatedTask);
-    //this.tasks.set(this.tasks().map((task) => (task.id === updatedTask.id ? updated : task)));
-
-    this.tasksStore.update(updatedTask);
-    this.tasksStore.get().subscribe({
-      next: (tasks) => {
-        this.tasks.set(tasks);
-      }
-    });
   }
 }

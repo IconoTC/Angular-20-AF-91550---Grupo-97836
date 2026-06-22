@@ -1,6 +1,6 @@
-import { Component, output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Task } from '../../entities/task';
+import { TasksStoreRx } from '../../services/tasks-store-rx';
 
 @Component({
   selector: 'ind-task-form',
@@ -65,11 +65,12 @@ import { Task } from '../../entities/task';
   `,
 })
 export class TaskForm {
-  protected readonly addEvent = output<Omit<Task, 'id'>>();
+  private tasksStore = inject(TasksStoreRx);
+ 
   submitForm(ngForm: NgForm) {
     console.log('ngForm', ngForm);
     if (ngForm.valid) {
-      this.addEvent.emit(ngForm.value);
+     this.tasksStore.add(ngForm.value);
       ngForm.resetForm();
     }
   }
