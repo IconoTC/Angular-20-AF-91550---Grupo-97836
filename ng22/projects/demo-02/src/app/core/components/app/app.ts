@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
@@ -6,6 +6,7 @@ import { Socials } from '../socials/socials';
 import { Menu } from '../menu/menu';
 import { getRoutes} from '../../../app.routes';
 import { MenuOption } from '../../types/menu-option';
+import { TasksStoreRx } from '../../../features/tasks/services/tasks-store-rx';
 
 @Component({
   selector: 'ind-root',
@@ -16,20 +17,6 @@ import { MenuOption } from '../../types/menu-option';
     </ind-header>
     <main class="container">
       <router-outlet />
-
-      <!-- Aquí cargara las páginas el Router -->
-      <!-- 
-      <ind-card class="wide">
-        <ind-home-page id="home"/>
-      </ind-card>
-
-      <ind-card class="wide">
-        <ind-dashboard-page id="dashboard" />
-      </ind-card>
-
-      <ind-card class="wide">
-        <ind-about-page id="about" />
-      </ind-card> -->
     </main>
     <ind-footer>
       <ind-socials class="socials" />
@@ -65,7 +52,14 @@ import { MenuOption } from '../../types/menu-option';
   `,
 })
 export class App {
+  readonly #tasksStore = inject(TasksStoreRx);
+  
   protected readonly title = signal('Curso de Angular 22');
   protected readonly subtitle = signal('Aprende a desarrollar aplicaciones con Angular');
   protected readonly menuOptions = signal<MenuOption[]>(getRoutes());
+  
+  
+  constructor() {
+    this.#tasksStore.get();
+  }
 }

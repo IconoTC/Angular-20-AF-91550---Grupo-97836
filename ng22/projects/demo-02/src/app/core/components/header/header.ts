@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { MenuMobile } from '../menu-mobile/menu-mobile';
 import { Separator } from '../separator/separator';
 import { LogoCoders } from '../logo-coders/logo-coders';
@@ -6,11 +6,17 @@ import { Search } from '../search/search';
 import { User } from '../user/user';
 import { Toggle } from '../toggle/toggle';
 import { SearchRef } from '../search/search.ref';
+import { TasksStoreRx } from '../../../features/tasks/services/tasks-store-rx';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'ind-header',
-  imports: [MenuMobile, Separator, LogoCoders, Search, SearchRef, User, Toggle],
+  imports: [MenuMobile, Separator, LogoCoders, 
+    Search, SearchRef, User, Toggle, AsyncPipe  ],
   template: `
+
+    @let tasks = taskStore.tasks$ | async;
+    
     <header>
       <div class="left-side">
         <ind-logo-coders />
@@ -24,6 +30,7 @@ import { SearchRef } from '../search/search.ref';
           <ind-user />
         </div>
         <ind-toggle />
+        <p>Tasks: {{ tasks?.length || 0 }}</p>
       </div>
       <div class="bottom-row">
         <p>{{ subtitle() }}</p>
@@ -128,10 +135,18 @@ import { SearchRef } from '../search/search.ref';
   ],
 })
 export class Header {
+  readonly taskStore = inject(TasksStoreRx);
+  // readonly tasksLength = signal(0);
+
   readonly title = input.required<string>({
     // eslint-disable-next-line @angular-eslint/no-input-rename
     alias: 'headerTitle',
   });
   readonly subtitle = input<string>();
 
+  // constructor() {
+  //   this.taskStore.tasks$.subscribe({
+  //     next: (tasks) => this.tasksLength.set(tasks.length),
+  //   });
+  // }
 }
